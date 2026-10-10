@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <!-- Clean Blue Shopping Bag Icon with Exchange Arrows -->
+  
+  <!-- 1. Bag Handle Arch -->
+  <path d="M 330,220 C 330,50 670,50 670,220" 
+        fill="none" 
+        stroke="#0067B1" 
+        stroke-width="36" 
+        stroke-linecap="square" />
+
+  <!-- 2. Bag Body (Vibrant Royal Cerulean Blue) -->
+  <path d="
+    M 140,220
+    L 860,220
+    L 860,800
+    C 845,845 848,890 860,935
+    L 140,935
+    L 140,750
+    C 160,630 155,470 140,220
+    Z
+  " fill="#0067B1" />
+
+  <!-- 3. Upper White Arrow (Pointing Up-Left) -->
+  <path d="
+    M 860,615
+    C 730,530 600,455 450,430
+    L 450,385
+    L 330,455
+    L 448,530
+    L 448,490
+    C 565,510 690,580 860,800
+    Z
+  " fill="#FFFFFF" />
+
+  <!-- 4. Lower White Arrow (Pointing Down-Right) -->
+  <path d="
+    M 140,560
+    C 270,640 410,725 540,710
+    L 540,665
+    L 660,740
+    L 540,815
+    L 540,772
+    C 420,782 280,720 140,745
+    Z
+  " fill="#FFFFFF" />
+</svg>

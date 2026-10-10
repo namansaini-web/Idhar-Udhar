@@ -1,0 +1,6 @@
+{
+  "name": "IDHAR UDHAR - Intercollege Campus Marketplace",
+  "description": "Hyper-local student marketplace to buy, sell, and rent college essentials (drafters, lab coats, cycles, gadgets) with secure campus exchanges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,172 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Student profile on campus",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "collegeName": { "type": "string" },
+        "hostelName": { "type": "string" },
+        "roomNumber": { "type": "string" },
+        "rollNumber": { "type": "string" },
+        "avatarSeed": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "fullName", "phone", "collegeName", "hostelName"]
+    },
+    "Listing": {
+      "title": "Listing",
+      "description": "Campus marketplace item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "originalCostPrice": { "type": "number" },
+        "reasonForSelling": { "type": "string" },
+        "listingType": { "type": "string", "enum": ["sell", "rent"] },
+        "rentPeriod": { "type": "string" },
+        "category": { "type": "string" },
+        "condition": { "type": "string" },
+        "collegeId": { "type": "string" },
+        "collegeName": { "type": "string" },
+        "hostelName": { "type": "string" },
+        "roomNumber": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "sellerPhone": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "tags": { "type": "array" },
+        "status": { "type": "string", "enum": ["available", "completed"] },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["id", "title", "price", "sellerId", "sellerName", "status"]
+    },
+    "CampusRequest": {
+      "title": "CampusRequest",
+      "description": "Urgent hostel peer request",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "maxBudget": { "type": "number" },
+        "category": { "type": "string" },
+        "urgency": { "type": "string" },
+        "collegeId": { "type": "string" },
+        "collegeName": { "type": "string" },
+        "hostelName": { "type": "string" },
+        "roomNumber": { "type": "string" },
+        "requesterId": { "type": "string" },
+        "requesterName": { "type": "string" },
+        "requesterPhone": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "status": { "type": "string" },
+        "responsesCount": { "type": "number" }
+      },
+      "required": ["id", "title", "requesterId", "requesterName"]
+    },
+    "ExchangeSession": {
+      "title": "ExchangeSession",
+      "description": "Campus meetup handover session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "listingId": { "type": "string" },
+        "listingTitle": { "type": "string" },
+        "price": { "type": "number" },
+        "listingType": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "sellerPhone": { "type": "string" },
+        "sellerHostel": { "type": "string" },
+        "sellerRoom": { "type": "string" },
+        "buyerId": { "type": "string" },
+        "buyerName": { "type": "string" },
+        "buyerPhone": { "type": "string" },
+        "buyerHostel": { "type": "string" },
+        "buyerRoom": { "type": "string" },
+        "campusLocation": { "type": "string" },
+        "exchangeCode": { "type": "string" },
+        "scheduledTime": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "listingId", "sellerId", "buyerId", "status"]
+    },
+    "ChatThread": {
+      "title": "ChatThread",
+      "description": "Direct conversation between buyer and seller",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "listingId": { "type": "string" },
+        "listingTitle": { "type": "string" },
+        "listingPrice": { "type": "number" },
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "sellerHostel": { "type": "string" },
+        "sellerPhone": { "type": "string" },
+        "buyerId": { "type": "string" },
+        "buyerName": { "type": "string" },
+        "buyerHostel": { "type": "string" },
+        "buyerPhone": { "type": "string" },
+        "lastMessageText": { "type": "string" },
+        "lastMessageTime": { "type": "string" },
+        "lastMessageSenderId": { "type": "string" },
+        "unreadCount": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["id", "listingId", "sellerId", "buyerId"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Message within a conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "threadId": { "type": "string" },
+        "listingId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "threadId", "senderId", "receiverId", "text"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Registered student profiles"
+    },
+    "/listings/{listingId}": {
+      "schema": "Listing",
+      "description": "Active campus listings"
+    },
+    "/requests/{requestId}": {
+      "schema": "CampusRequest",
+      "description": "Urgent hostel requests"
+    },
+    "/exchanges/{exchangeId}": {
+      "schema": "ExchangeSession",
+      "description": "Handover meetup sessions"
+    },
+    "/threads/{threadId}": {
+      "schema": "ChatThread",
+      "description": "Chat conversations"
+    },
+    "/threads/{threadId}/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Chat messages in thread"
+    }
+  }
+}
